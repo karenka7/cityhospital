@@ -9,7 +9,7 @@
 
 | Version | Date         | Reviewed By             | Comments                                                                                        | Approval |
 | ------- | ------------ | ----------------------- | ----------------------------------------------------------------------------------------------- | -------- |
-| 0.1     | June 1, 2026 | Karen Sullivan (author) | fictional high-level proposal document submitted with application: Technical Writer at Palantir |          |
+| 0.1     | June 1, 2026 | Karen Sullivan (author) | fictional high-level proposal document |          |
 | 0.2     | June 9, 2026 | Karen Sullivan          | added detail on data sources <br>formatting changes                                             |          |
 
 ---
