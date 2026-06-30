@@ -1,3 +1,23 @@
+---  
+title: Claim Denial Prevention - Proposal  
+artifact-type: proposal  
+version: 0.3  
+status: draft  
+owner: Karen Sullivan  
+last-reviewed: 2026-06-21  
+  
+domain: Healthcare Revenue Cycle  
+capability: Claim Denial Prevention  
+  
+audience:  
+- Business Analyst  
+- Solution Architect  
+  
+tags:  
+- healthcare  
+- utilization management  
+- revenue cycle
+---
 # Claim Denial Prevention / Utilization Management Visibility
 ## High Level Solution Proposal
 
@@ -7,10 +27,10 @@
 
 ## Proposal Review and Approval
 
-| Version | Date         | Reviewed By             | Comments                                                                                        | Approval |
-| ------- | ------------ | ----------------------- | ----------------------------------------------------------------------------------------------- | -------- |
-| 0.1     | June 1, 2026 | Karen Sullivan (author) | fictional high-level proposal document |          |
-| 0.2     | June 9, 2026 | Karen Sullivan          | added detail on data sources <br>formatting changes                                             |          |
+| Version | Date         | Reviewed By             | Comments                               | Approval |
+| ------- | ------------ | ----------------------- | -------------------------------------- | -------- |
+| 0.1     | June 15, 2026 | Karen Sullivan (author) | fictional high-level proposal document |          |
+| 0.2     | June 19, 2026 | Karen Sullivan         | inline sequence diagram,<br>front matter metadata        |          |
 
 ---
 
@@ -99,9 +119,28 @@ The Claim Denial Prevention Platform will provide the following capabilities, or
 The Revenue Cycle Workflow will be updated with the Claim Denial Prevention Platform prior to claim submission.
 
 **Figure 1. Revenue Cycle Workflow**
+```mermaid
+sequenceDiagram
+title Patient Claim Submission to Payer
 
-![Revenue Cycle Workflow](images/figure1-revenue-cycle-workflow.png)
+participant PE as Patient Encounter<br/>Pre-Auth / NOA
+participant UR as Utilization Review
+participant CDI as CDI / Coding
+participant CAV as Claim Assembly<br/>and Validation
+participant CDP as Claim Denial<br/>Prevention Module
+participant IP as Insurance Payer
+participant RI as Revenue Integrity
 
+PE->>UR: EPIC codes
+CDI->>CAV: Claim packet assembly
+CAV->>CDP: Submit completed claim
+alt Claim passes validation
+   CDP->>IP: Route validated claim
+else Claim has denial risks
+   CDP->>RI: Generate recommended actions
+end
+IP-->>RI: Return claim status
+```
 ---
 
 # 5. Claim Denial Prevention Platform
